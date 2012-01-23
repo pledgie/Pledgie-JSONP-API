@@ -56,7 +56,7 @@
   .pledgie .pledgeForm h3 { font-weight:bold;}
 
   </style>
-  <div data-pledgie-account-id='2'></div>
+  <div data-pledgie-account='heavysixer'></div>
 
   <script type="text/javascript" charset="utf-8">
     /* <![CDATA[ */
@@ -180,12 +180,11 @@
             };
         }
 
-        $.getJSON("http://127.0.0.1:3000/accounts/heavysixer.json?_method=get&callback=?",
+        $.getJSON("http://www.pledgie.com/accounts/heavysixer.json?_method=get&callback=?",
         function(data) {
             var p = pledgieSkin();
-            console.log(data);
             p.auth_token = data.auth_token;
-            var accountContainer = $("*[data-pledgie-account-id]");
+            var accountContainer = $("*[data-pledgie-account='"+data.account.login+"']");
             if(accountContainer) {
               $(accountContainer).addClass('pledgie');
               $.each(data.account.campaigns, function(i,c){
