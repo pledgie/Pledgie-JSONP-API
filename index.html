@@ -1,0 +1,201 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+   "http://www.w3.org/TR/html4/loose.dtd">
+
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>untitled</title>
+  <meta name="generator" content="TextMate http://macromates.com/">
+  <meta name="author" content="Mark Daggett">
+  <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+</head>
+<body>
+  <style type="text/css" media="screen">
+  .pledgie h1,.pledgie h2,.pledgie h3,.pledgie h4,.pledgie h5,.pledgie h6,.pledgie p,.pledgie blockquote,.pledgie pre,.pledgie a,.pledgie abbr,.pledgie acronym,.pledgie address,.pledgie cite,.pledgie code,.pledgie del,.pledgie dfn,.pledgie em,.pledgie img,.pledgie q,.pledgie s,.pledgie samp,.pledgie small,.pledgie strike,.pledgie strong,.pledgie sub,.pledgie sup,.pledgie tt,.pledgie var,.pledgie dd,.pledgie dl,.pledgie dt,.pledgie li,.pledgie ol,.pledgie ul,.pledgie fieldset,.pledgie form,.pledgie label,.pledgie legend,.pledgie button,.pledgie table,.pledgie caption,.pledgie tbody,.pledgie tfoot,.pledgie thead,.pledgie tr,.pledgie th,.pledgie td{margin:0;padding:0;border:0;font-weight:normal;font-style:normal;font-size:100%;line-height:1.2;font-family:inherit;}
+  .pledgie table{border-collapse:collapse;border-spacing:0;}
+  .pledgie ol,.pledgie ul{list-style:none;}
+  .pledgie q:before,.pledgie q:after,.pledgie blockquote:before,.pledgie blockquote:after{content:"";}
+  .pledgie a { color: #3399cc; margin: 0; padding: 0; }
+  .pledgie a:hover { color: #0099ff; }
+  .pledgie a:focus { outline: none; }
+  .pledgie a:focus{outline:thin dotted;}
+  .pledgie a:hover,.pledgie a:active{outline:0;}
+  .pledgie article,.pledgie aside,.pledgie details,.pledgie figcaption,.pledgie figure,.pledgie footer,.pledgie header,.pledgie hgroup,.pledgie nav,.pledgie section{display:block;}
+  .pledgie audio,.pledgie canvas,.pledgie video{display:inline-block;*display:inline;*zoom:1;}
+  .pledgie audio:not([controls]){display:none;}
+  .pledgie sub,.pledgie sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline;}
+  .pledgie sup{top:-0.5em;}
+  .pledgie sub{bottom:-0.25em;}
+  .pledgie img{border:0;-ms-interpolation-mode:bicubic;}
+  .pledgie button,.pledgie input,.pledgie select,.pledgie textarea{font-size:100%;margin:0;vertical-align:baseline;*vertical-align:middle;}
+  .pledgie button,.pledgie input{line-height:normal;*overflow:visible;}
+  .pledgie button::-moz-focus-inner,input::-moz-focus-inner{border:0;padding:0;}
+  .pledgie button,.pledgie input[type="button"],input[type="reset"],input[type="submit"]{cursor:pointer;-webkit-appearance:button;}
+  .pledgie textarea{overflow:auto;vertical-align:top;}
+  .pledgie .campaignFormat{color: #333333;font-family: "Lucida Grande","Lucida Sans Unicode",Verdana,Helvetica,Arial,sans-serif;font-size: 12px;}
+  .pledgie .prependTop { margin-top:10px !important;}
+  .pledgie .appendBottom { margin-bottom:10px !important;}
+  .pledgie .left { float:left !important;}
+  .pledgie .right { float:right !important;}
+  .pledgie .description p {margin-bottom:10px;}
+  .pledgie .campaignContainer{margin:10px;width:430px;padding: 5px 20px 20px 20px;-moz-border-radius: 5px;border-radius: 5px;-moz-box-shadow: 0 0 10px #888; -webkit-box-shadow: 0 0 10px #888; box-shadow: 0 0 10px #888;}
+  .pledgie .campaignImages {background-color:#F1F1F1;-moz-border-radius: 3px;border-radius: 3px;}
+  .pledgie .campaignImages img{max-width:430px;margin:0 auto; display:block;}
+  .pledgie .campaignHeader{color: #222222;font-size: 14px;font-weight: bold;margin: 5px 0;white-space: nowrap;}
+  .pledgie .campaignHeader a {border-bottom: 2px solid #E8E8E8; color: #222222; font-weight: bold; text-decoration: none; }
+  .pledgie .amountMessage { color:#8A8A83;margin: 0;font-weight:bold;}
+  .pledgie .pledgeometer .graph {background-color:#F1F1F1;-moz-border-radius: 3px;border-radius: 3px;}
+  .pledgie .pledgeometer .graph .bar{-moz-border-radius: 3px;border-radius: 3px;display:block;position:relative;background:#C7D942;text-align:center;color:#fff;height:2em;line-height:2em;}
+  .pledgie .pledgeometer .graph .bar span{position:absolute;left:1em;}
+  .pledgie .pledgeometer .amounts{height:1.5em;width:100%;}
+  .pledgie .pledgeometer li{padding:0;border-left:1px solid #b8b3a5;margin:0;float:left;}
+  .pledgie .pledgeometer li.last{border:none;padding-right:0.5em;border-right:1px solid #b8b3a5;margin:0;float:right;text-align:right;}
+  .pledgie .pledgeometer li:before{content:"" !important;}
+  .pledgie .additionalInformation dt { font-weight:bold;}
+  .pledgie .additionalInformation dd, .pledgie .additionalInformation dt { margin-right:5px;}
+  .pledgie .pledgeForm h3 { font-weight:bold;}
+
+  </style>
+  <div data-pledgie-account-id='2'></div>
+
+  <script type="text/javascript" charset="utf-8">
+    /* <![CDATA[ */
+    $(document).ready(function() {
+        function pledgieSkin() {
+            return {
+                evenOrOdd: function(val) {
+                    return ((val % 2 === 0) ? 'odd': 'even');
+                },
+                amountMessage: function(campaign){
+                  if(campaign.goal){
+                    return campaign.amount_raised_formatted + " - " + campaign.goal_formatted;
+                  } else {
+                    return campaign.amount_raised_formatted + "Raised";
+                  }
+                },
+                campaign: function(campaign) {
+                    categories = [];
+                    for (var x = 0; x < campaign.categories.length; x++) {
+                        categories.push(campaign.categories[x].category.name);
+                    }
+                    return " \
+                    <div class='left campaignFormat campaignContainer'> \
+                      <div class='campaignHeader appendBottom'> \
+                        <h1><a href='http://www.pledgie.com/campaigns/"+campaign.id+"' target='_new'>" + campaign.title + "</a></h1> \
+                      </div> \
+                      <p class='amountMessage appendBottom'>" + this.amountMessage(campaign) + "</p> \
+                      " + this.pledgeometer(campaign) + " \
+                      <div> \
+                        "+ this.images(campaign) + "\
+                        <div class='description'>" + campaign.description + "</div> \
+                          <dl class='additionalInformation'> \
+                            <dt class='left'> Categories</dt> \
+                            <dd class='left'>" + categories.join(', ') + "</dd> \
+                          </dl> \
+                        </div> \
+                      <div class='right'>"+this.donateForm(campaign)+"</div> \
+                    </div>";
+                },
+                images: function(campaign){
+                  var str ='';
+                  var len = campaign.images.length;
+                  if(len > 0){
+                    str += "<div class='campaignImages appendBottom prependTop'>";
+                    for(var x = 0; x < len; x++){
+                      str += "<img src='http://www.pledgie.com" + campaign.images[x].medium +"'/>";
+                    }
+                    str += "</div>";
+                  }
+                  return str;
+                },
+                pledgeometer: function(campaign){
+                  if(campaign.goal){
+                    return "<div class='pledgeometer appendBottom'> \
+                      <div class='graph'> \
+                        <strong class='bar' style='width: " + campaign.percent_towards_goal + "%;'> \
+                          <span>" + campaign.percent_towards_goal + "%</span> \
+                        </strong> \
+                      </div> \
+                    </div>";
+                  }else{
+                    return '';
+                  }
+                },
+                donateForm: function(campaign) {
+                    return "<div class='prependTop'> \
+                      <form action='http://www.pledgie.com/campaigns/" + campaign.id + "/pledge/confirm' method='post'> \
+                        <div style='margin: 0pt; padding: 0pt; display: inline;'> \
+                          <input name='authenticity_token' value='" + this.auth_token + "' type='hidden'> \
+                        </div> \
+                        <div class='pledgeForm'> \
+                          <h3>Make A Pledge</h3> \
+                          <ul> \
+                            <li> \
+                              <label>Amount:</label> \
+                              <input class='wantsMoney' name='pledge[amount]' size='10' type='text'> \
+                              <input name='commit' value='Submit' type='submit'> \
+                            </li> \
+                          </ul> \
+                        </div> \
+                      </form> \
+                    </div>";
+                },
+                donors: function(campaign) {
+                    var donors = [];
+                    for (var x = 0; x < campaign.pledges.length; x++) {
+                        donors.push(
+                        "<tr class='" + evenOrOdd(x) + "'>" +
+                        "  <td>" +
+                        (x + 1) + ". " +
+                        campaign.pledges[x].display_name +
+                        ((campaign.pledges[x].donation_type === 'manual') ? "<span class='manualDonation'*</span>": "") +
+                        "  </td> " +
+                        "  <td> " + campaign.pledges[x].date + "</td>" +
+                        "</tr>"
+                        );
+                    }
+                    return "<div class='donors columnItem'>" +
+                    "  <table cellpadding='0' cellspacing='0'>" +
+                    "    <caption> Donors (" + campaign.pledges_count + ")</caption>" +
+                    "    <thead>" +
+                    "      <tr>" +
+                    "        <th>Name</th>" +
+                    "        <th>Date</th>" +
+                    "      </tr>" +
+                    "    </thead>" +
+                    "    <tfoot>" +
+                    "      <tr>" +
+                    "        <td colspan='2'>" +
+                    "          <span><em>* Denotes a manually entered pledge.</em></span>" +
+                    "          <a href='/campaigns/" + campaign.id + "/donations_feed'>Donation RSS Feed</a>" +
+                    "        </td>" +
+                    "      </tr>" +
+                    "    </tfoot>" +
+                    "    <tbody>" +
+                    donors.join('') +
+                    "    </tbody>" +
+                    "  </table>" +
+                    "</div>";
+                }
+            };
+        }
+
+        $.getJSON("http://127.0.0.1:3000/accounts/heavysixer.json?_method=get&callback=?",
+        function(data) {
+            var p = pledgieSkin();
+            console.log(data);
+            p.auth_token = data.auth_token;
+            var accountContainer = $("*[data-pledgie-account-id]");
+            if(accountContainer) {
+              $(accountContainer).addClass('pledgie');
+              $.each(data.account.campaigns, function(i,c){
+                $(accountContainer).append("<div data-pledgie-campaign-id='"+c.id+"'></div>");
+                $('*[data-pledgie-campaign-id='+c.id+']').append(p.campaign(c));
+              });
+            }
+        });
+    });
+    /* ]]> */
+  </script>
+</body>
+</html>
