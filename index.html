@@ -223,7 +223,7 @@ $(document).ready(function() {
                 var p = pledgieSkin();
                 p.auth_token = data.auth_token;
                 $(accountContainer).addClass('pledgie');
-                var str;
+                var str ="";
                 $.each(data.account.campaigns,
                 function(i, c) {
                     str +="<div data-pledgie-campaign-id='" + c.id + "'>"+p.campaign(c)+"</div>";
